@@ -1,0 +1,28 @@
+{
+  "name": "testygoodfood",
+  "version": "1.0.0",
+  "description": "\"This is TestyGoodFood app create using React.js\"",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx parcel index.html",
+    "build": "npm parcel build index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BaldaniyaParth/TestyGoodFood.git"
+  },
+  "author": "\"Parth Baldaniya\"",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BaldaniyaParth/TestyGoodFood/issues"
+  },
+  "homepage": "https://github.com/BaldaniyaParth/TestyGoodFood#readme",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "parcel": "^2.12.0",
+    "process": "^0.11.10"
+  }
+}
