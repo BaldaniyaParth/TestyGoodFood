@@ -1,6 +1,8 @@
+const logo = new URL("../image/TestyGoodFood.png", import.meta.url);
+
 const Title = () => {
     return (
-        <img className="logo" src="https://cdn.dribbble.com/users/7918631/screenshots/15678630/media/3b295f16dcae01b070a2c509fc493f65.jpg" alt="TestyGoodFood Logo"></img>
+        <img className="logo" src={logo} alt="TestyGoodFood Logo" />
     )
 }
 
