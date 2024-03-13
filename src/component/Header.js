@@ -1,4 +1,4 @@
-const logo = new URL("../image/TestyGoodFood.png", import.meta.url);
+import  logo  from "../image/TestyGoodFood.png";
 
 const Title = () => {
     return (
