@@ -1,33 +1,34 @@
 import { IMG_CDN_URL } from "../Contant";
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 const RestaurantCard = ({
   cloudinaryImageId,
   name,
   cuisines,
   area,
-  lastMileTravelString,
-  costForTwoString,
   avgRating,
+  slaString,
+  
 }) => {
   return (
     <div className="card">
-      <img src={IMG_CDN_URL + cloudinaryImageId} />
-      <h2>{name}</h2>
-      <h5>{cuisines.join(", ")}</h5>
-      <h6>{area}</h6>
-      <span>
+      <img className="food-image" src={IMG_CDN_URL + cloudinaryImageId} />
+      <h3 className="food-name">{name}</h3>
+      <span className="food-avg-min">
         <h4
           style={
             avgRating < 4 ? { backgroundColor: "red" } : { color: "white" }
           }
+          className="food-avg"
         >
-          <i className="fa-solid fa-star"></i>
-          {avgRating}
+        <FontAwesomeIcon icon={faStar} className="star" /> {avgRating}
         </h4>
-        <h4>{lastMileTravelString}</h4>
-        <h4>{costForTwoString}</h4>
+        <h4 className="food-min">{slaString}</h4>
       </span>
+      <h4 className="food-cuisines">{cuisines.join(", ")}</h4>
+      <h4 className="food-area">{area}</h4>
+      
     </div>
   );
 };
