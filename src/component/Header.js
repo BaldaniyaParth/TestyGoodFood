@@ -2,7 +2,7 @@ import  logo  from "../image/TestyGoodFood.png";
 
 const Title = () => {
     return (
-        <img className="logo" src={logo} alt="TestyGoodFood Logo" />
+        <a href="/"><img className="logo" src={logo} alt="TestyGoodFood Logo" /></a>
     )
 }
 
