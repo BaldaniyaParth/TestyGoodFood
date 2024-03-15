@@ -49,6 +49,39 @@
 
 /* Body CSS */
 
+/* Shimmer CSS */
+.card.shimmer {
+  width: 300px;
+  border-radius: 10px;
+  box-shadow: -1px 5px 10px 5px rgba(42, 42, 42, 0.2);
+  padding: 10px;
+  margin: 20px;
+  overflow: hidden; /* Ensure shimmer does not overflow */
+}
+
+.card.shimmer .food-image {
+  width: 100%;
+  height: 150px; /* Match the height of your food image */
+  border-radius: 20px;
+  background-color: #f0f0f0; /* Light gray background */
+}
+
+.card.shimmer .content {
+  padding: 10px;
+}
+
+.card.shimmer .food-name-shimmer,
+.card.shimmer .food-avg-shimmer,
+.card.shimmer .food-min-shimmer,
+.card.shimmer .food-cuisines-shimmer,
+.card.shimmer .food-area-shimmer {
+  width: 100%;
+  height: 20px;
+  background-color: #f0f0f0; /* Light gray background */
+  margin-bottom: 5px; /* Adjust as needed */
+}
+
+
 /* Search CSS */
 .search {
   display: flex;
@@ -69,10 +102,6 @@
   font-size: large;
   border: none;
   cursor: pointer;
-}
-
-.loading {
-  padding-top: 200px ;
 }
 
 /* Card CSS */
