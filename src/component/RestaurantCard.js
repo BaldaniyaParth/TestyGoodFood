@@ -19,7 +19,7 @@ const RestaurantCard = ({
         <span className="food-avg-min">
           <h4
             style={
-              avgRating < 4 ? { backgroundColor: "red" } : { color: "white" }
+              avgRating < 4.5 ? { backgroundColor: "red" } : { color: "white" }
             }
             className="food-avg"
           >

@@ -71,6 +71,10 @@
   cursor: pointer;
 }
 
+.loading {
+  padding-top: 200px ;
+}
+
 /* Card CSS */
 .restaurant-list {
   width: auto;
