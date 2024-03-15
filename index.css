@@ -42,6 +42,11 @@
   cursor: pointer;
 }
 
+.link {
+  text-decoration: none;
+  color: black;
+}
+
 .login , .logout{
   margin: 35px 10px;
   font-size: large;
@@ -209,4 +214,13 @@
 
 .logo-name {
   color: rgba(227,96,26,255);
+}
+
+
+.about {
+  padding-top: 150px;
+}
+
+.contact {
+  padding-top: 150px;
 }

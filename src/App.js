@@ -1,15 +1,41 @@
 import Header from "./component/Header";
 import Footer from "./component/Footer";
 import Body from "./component/Body";
+import About from "./component/About";
+import Contact from "./component/Contact";
+import Error from "./component/Error";
+import { createBrowserRouter, Outlet } from "react-router-dom";
 
-const App = () => {
+const AppLayout = () => {
     return(
     <>
         <Header />
-        <Body />
+        <Outlet />
         <Footer />
     </>
     )
 }
 
-export default App;
+const AppRoute = createBrowserRouter([
+    {
+        path : "/",
+        element : <AppLayout />,
+        errorElement : <Error />,
+        children : [
+            {
+                path : "/",
+                element : <Body />
+            },
+            {
+                path : "/about",
+                element : <About />
+            },
+            {
+                path : "/contact",
+                element : <Contact />
+            },
+        ]
+    }
+])
+
+export default AppRoute;
