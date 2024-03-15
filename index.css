@@ -42,12 +42,51 @@
   cursor: pointer;
 }
 
+.login , .logout{
+  margin: 35px 10px;
+  font-size: large;
+  border: none;
+  background-color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
 .nav-items > ul > li:hover {
+  transform: scale(1.05);
+}
+
+.nav-items > ul > button:hover {
   transform: scale(1.05);
 }
 
 
 /* Body CSS */
+
+/* Search CSS */
+.search {
+  display: flex;
+  padding: 120px 0 10px 0;
+  justify-content: center;
+  position: fixed;
+  width: 100%;
+  z-index: 99;
+  background-color: white;
+}
+
+.search-input {
+  padding: 10px;
+  width: 400px;
+  font-size: medium;
+  
+}
+
+.search-btn {
+  width: 120px;
+  background-color: rgb(250, 75, 75);
+  font-size: large;
+  border: none;
+  cursor: pointer;
+}
 
 /* Shimmer CSS */
 .card.shimmer {
@@ -81,36 +120,13 @@
   margin-bottom: 5px; /* Adjust as needed */
 }
 
-
-/* Search CSS */
-.search {
-  display: flex;
-  padding-top: 120px;
-  justify-content: center;
-}
-
-.search-input {
-  padding: 10px;
-  width: 400px;
-  font-size: medium;
-  
-}
-
-.search-btn {
-  width: 120px;
-  background-color: rgb(250, 75, 75);
-  font-size: large;
-  border: none;
-  cursor: pointer;
-}
-
 /* Card CSS */
 .restaurant-list {
   width: auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 20px 100px 80px 100px;
+  padding: 180px 100px 80px 100px;
 }
 
 .card {
