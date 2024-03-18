@@ -3,7 +3,7 @@ import Footer from "./component/Footer";
 import Body from "./component/Body";
 import About from "./component/About";
 import Contact from "./component/Contact";
-import Error from "./component/Error";
+import PageNotFound from "./component/Error";
 import { createBrowserRouter, Outlet } from "react-router-dom";
 
 const AppLayout = () => {
@@ -20,7 +20,7 @@ const AppRoute = createBrowserRouter([
     {
         path : "/",
         element : <AppLayout />,
-        errorElement : <Error />,
+        errorElement : <PageNotFound />,
         children : [
             {
                 path : "/",

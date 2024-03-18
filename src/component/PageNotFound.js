@@ -1,7 +1,7 @@
 import ErrorImage from "../assets/img/404 Error.jpg";
 import { useRouteError, Link } from "react-router-dom"; // import useRouteError for routing error
 
-const Error = () => {
+const PageNotFound = () => {
   const err = useRouteError();
   return (
     <div className="error-page">
@@ -15,4 +15,4 @@ const Error = () => {
   );
 };
 
-export default Error;
+export default PageNotFound;
