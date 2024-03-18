@@ -217,6 +217,35 @@
 }
 
 
+/* Error CSS */
+.error-page {
+  text-align: center;
+  background-color: white;
+  height: 100vh;
+  width: auto;
+}
+
+.error-page .error-data {
+  padding: 10px 0px;
+}
+
+.error-page .error-back-home {
+  padding: 20px;
+}
+
+.error-page .error-back-home a {
+  text-decoration: none;
+  background-color: rgba(227,96,26,255);
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+
+.error-page .error-back-home:hover {
+  transform: scale(1.1);
+}
+
+
 .about {
   padding-top: 150px;
 }
