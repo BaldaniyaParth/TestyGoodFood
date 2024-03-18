@@ -2,8 +2,8 @@ import Header from "./component/Header";
 import Footer from "./component/Footer";
 import Body from "./component/Body";
 import About from "./component/About";
-import Contact from "./component/Contact";
-import PageNotFound from "./component/Error";
+import ContactUs from "./component/ContactUs";
+import PageNotFound from "./component/PageNotFound";
 import { createBrowserRouter, Outlet } from "react-router-dom";
 
 const AppLayout = () => {
@@ -32,7 +32,7 @@ const AppRoute = createBrowserRouter([
             },
             {
                 path : "/contact",
-                element : <Contact />
+                element : <ContactUs />
             },
         ]
     }

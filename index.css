@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+
 /* Select all CSS */
 * {
   margin: 0;
@@ -87,7 +90,7 @@
 
 .search-btn {
   width: 120px;
-  background-color: rgb(250, 75, 75);
+  background-color: rgba(227,96,26,255);
   font-size: large;
   border: none;
   cursor: pointer;
@@ -217,7 +220,7 @@
 }
 
 
-/* Error CSS */
+/* PageNotFound CSS */
 .error-page {
   text-align: center;
   background-color: white;
@@ -252,4 +255,88 @@
 
 .contact {
   padding-top: 150px;
+}
+
+
+/* Contact CSS */
+.contact-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 70px auto 20px;
+  overflow-y: hidden;
+  height: 85vh;
+}
+
+.contact-container .contact-left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-container .contact-left img {
+  width: 300px;
+}
+
+.contact-container .contact-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: x-large;
+}
+
+.contact-container .contact-right h1 {
+  color: #353535;
+}
+
+.contact-container .contact-right form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-container .contact-right form input {
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(227,96,26,255);
+  min-width: 50vw;
+}
+
+.contact-container .contact-right form textarea {
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(227,96,26,255);
+  min-width: 50vw;
+  height: 20vh;
+}
+
+.contact-container .contact-right form input:focus,
+.contact-container .contact-right form textarea:focus {
+  outline: 1px outset rgba(227,96,26,255);
+}
+
+.contact-container .contact-right form button {
+  padding: 10px 20px;
+  margin: 10px;
+  background-color: rgba(227,96,26,255);
+  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+  color: #ffffff;
+  font-size: large;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+}
+
+.contact-container .contact-right form button:hover {
+  background-color: rgba(227,96,26,255);
 }
