@@ -340,3 +340,60 @@
 .contact-container .contact-right form button:hover {
   background-color: rgba(227,96,26,255);
 }
+
+
+/* About CSS */
+.about-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 150px 25px 10px;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.about-container .about-left {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
+  overflow-y: hidden;
+  margin-bottom: 20px;
+}
+
+.about-container .about-left h1 {
+  font-size: 70px;
+  color: #353535;
+}
+
+.about-container .about-left h1 span {
+  background-color: rgba(227,96,26,255);
+  padding: 0 10px;
+  border-radius: 15px;
+  color: #eaeaea;
+}
+
+.about-container .about-left h4 {
+  font-size: 25px;
+  margin-top: 10px;
+  font-style: italic;
+  color: #353535;
+}
+
+.about-container .about-left h4 span {
+  color: rgba(227,96,26,255);
+}
+
+.about-container .about-right {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow-y: hidden;
+}
+
+.about-container .about-right img {
+  width: 350px;
+  border-radius: 25%;
+}
