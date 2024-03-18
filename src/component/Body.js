@@ -1,6 +1,6 @@
 import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
-import Shimmer from "./Shimmer";
+import {Shimmer } from "./Shimmer";
 
 function filterData(searchText, allRestaurants) {
   return allRestaurants.filter((restaurant) =>
@@ -77,11 +77,11 @@ const Body = () => {
         ) : (
           filteredRestaurants?.map((restaurant) => (
             <>
-              <RestaurantCard
-                key={restaurant?.info?.id}
-                {...restaurant?.info}
-              />
-            </>
+            <RestaurantCard
+              key={restaurant?.info?.id}
+              {...restaurant?.info}
+            />
+          </>
           ))
         )}
       </div>
