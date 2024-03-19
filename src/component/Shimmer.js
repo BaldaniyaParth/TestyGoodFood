@@ -1,4 +1,3 @@
-
 export const Shimmer = () => {
   return (
     <div className="card shimmer">
@@ -15,41 +14,47 @@ export const Shimmer = () => {
 };
 
 export const ShimmerMenu = () => {
+
+  const shimmerItems = Array.from({ length: 20 }, (_, index) => index);
+
   return (
     <div className="restaurant-menu">
-      <div className="restaurant-summary stroke-color animate">
-        <img className="shimmer-img stroke animate" />
-        <div className="restaurant-summary-details">
-          <h2 className="shimmer-w40  stroke animate"></h2>
-          <p className="shimmer-w20 stroke animate"></p>
-          <div className="shimmer-w60  stroke animate">
+      <div className="shimmer-restaurant-summary">
+        <div className="shimmer-restaurant-img"></div>
+        <div className="shimmer-restaurant-summary-details">
+          <div className="shimmer-restaurant-title"></div>
+          <div className="shimmer-restaurant-tags"></div>
+          <div className="shimmer-restaurant-details">
+            <div className="shimmer-restaurant-rating"></div>
+            <div className="shimmer-restaurant-sla"></div>
+            <div className="shimmer-restaurant-cost-for-two"></div>
           </div>
         </div>
       </div>
 
-      <div className="restaurant-menu-content">
-        <div className="menu-items-container">
-          <div className="menu-title-wrap ">
-            <h3 className="shimmer-w40 stroke animate"></h3>
-            <p className="shimmer-w20 stroke animate"></p>
-          </div>
-          <div className="menu-items-list">
-            { Array(20).fill("").map( (element, index)  => 
-            <div className="shimmer-menu-card" key={index}>
-              <div className="shimmer-item-details">
-                <h3 className="shimmer-w40  stroke animate"></h3>
-                <p className="shimmer-w20  stroke animate"> </p>
-                <p className="shimmer-w60  stroke animate"></p>
+      <div className="shimmer-restaurant-menu-content">
+      <div className="shimmer-menu-items-container">
+        <div className="shimmer-menu-title-wrap">
+          <div className="shimmer-menu-title"></div>
+          <div className="shimmer-menu-count"></div>
+        </div>
+        <div className="shimmer-menu-items-list">
+          {shimmerItems.map((index) => (
+            <div className="shimmer-menu-item" key={index}>
+              <div className="shimmer-menu-item-details">
+                <div className="shimmer-item-title"></div>
+                <div className="shimmer-item-cost"></div>
+                <div className="shimmer-item-desc"></div>
               </div>
-              <div className="shimmer-img-wrapper">
-                <img className="shimmer-img stroke animate" /> 
-                <div className="shimmer-btn stroke animate"> </div>
+              <div className="shimmer-menu-img-wrapper">
+                <div className="shimmer-menu-item-img"></div>
+                <div className="shimmer-add-btn"></div>
               </div>
             </div>
-            )}
-          </div>
+          ))}
         </div>
       </div>
     </div>
-  )
-}
+    </div>
+  );
+};

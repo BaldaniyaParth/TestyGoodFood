@@ -22,6 +22,7 @@ const Header = () => {
           <li><Link to="/about" className="link">About</Link></li>
           <li><Link to="/contact" className="link">Contact</Link></li>
           <li>Cart</li>
+          <Link to="/login">
           {isloggedIn == false ? (
             <button
               className="login"
@@ -41,6 +42,7 @@ const Header = () => {
               Logout
             </button>
           )}
+          </Link>
         </ul>
       </div>
     </div>

@@ -11,11 +11,11 @@ import {
 import { ShimmerMenu } from "./Shimmer";
 
 const RestaurantMenu = () => {
-  const { resId } = useParams(); // call useParams and get value of restaurant id using object destructuring
-  const [restaurant, setRestaurant] = useState(null); // call useState to store the api data in res
+  const { resId } = useParams(); 
+  const [restaurant, setRestaurant] = useState(null);
   const [menuItems, setMenuItems] = useState([]);
   useEffect(() => {
-    getRestaurantInfo(); // call getRestaurantInfo function so it fetch api data and set data in restaurant state variable
+    getRestaurantInfo(); 
   }, []);
 
   async function getRestaurantInfo() {
@@ -23,12 +23,10 @@ const RestaurantMenu = () => {
       const response = await fetch("https://foodfire.onrender.com/api/menu?page-type=REGULAR_MENU&complete-menu=true&lat=21.1702401&lng=72.83106070000001&&submitAction=ENTER&restaurantId="+resId);
       const json = await response.json();
 
-      // Set restaurant data
       const restaurantData = json?.data?.cards?.map(x => x.card)?.
                              find(x => x && x.card['@type'] === RESTAURANT_TYPE_KEY)?.card?.info || null;
       setRestaurant(restaurantData);
 
-      // Set menu item data
       const menuItemsData = json?.data?.cards.find(x=> x.groupedCard)?.
                             groupedCard?.cardGroupMap?.REGULAR?.
                             cards?.map(x => x.card?.card)?.
@@ -64,7 +62,7 @@ const RestaurantMenu = () => {
           <p className="restaurant-tags">{restaurant?.cuisines?.join(", ")}</p>
           <div className="restaurant-details">
             <div className="restaurant-rating" style={
-            (restaurant?.avgRating) < 4
+            (restaurant?.avgRating) < 4.3
               ? { backgroundColor: "red" }
               : (restaurant?.avgRating) === "--"
               ? { backgroundColor: "white", color: "black" }
