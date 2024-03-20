@@ -1,5 +1,6 @@
 import food from "../assets/img/food.jpg";
 
+// About component for displaying about content
 const About = () => {
   return (
     <div className="about-container">
@@ -19,4 +20,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default About; // Exporting About component as default

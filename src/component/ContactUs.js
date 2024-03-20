@@ -1,12 +1,16 @@
 import { useState } from "react";
 import contact from "../assets/img/conatct.jpg";
 
+// ContactUs component for displaying contact form
 const ContactUs = () => {
-  const [message, setMessage] = useState(false);
+  const [message, setMessage] = useState(false); // State for displaying message after submission
+
+  // Function to handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     setMessage(true);
   };
+
   return (
     <div className="contact-container">
       <div className="contact-left">
@@ -19,6 +23,7 @@ const ContactUs = () => {
           <input type="email" placeholder="Email" required />
           <textarea placeholder="Type your Message here..." required></textarea>
           <button type="submit">Submit</button>
+          {/* Displaying message after submission */}
           {message && (
             <span>
               Thanks for contacting TestyGoodFood, We will reply ASAP.
@@ -30,4 +35,4 @@ const ContactUs = () => {
   );
 };
 
-export default ContactUs;
+export default ContactUs; // Exporting ContactUs component as default

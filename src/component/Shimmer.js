@@ -1,6 +1,13 @@
+// Component for rendering a shimmer effect for a single food item card
 export const Shimmer = () => {
+
+  // Generating an array of indices for shimmer items
+  const shimmerItems = Array.from({ length: 20 }, (_, index) => index);
+
   return (
-    <div className="card shimmer">
+    <>
+    {shimmerItems.map((index) => (
+    <div className="card shimmer" key={index}>
       <div className="food-image shimmer"></div>
       <div className="content">
         <div className="food-name-shimmer shimmer"></div>
@@ -10,11 +17,15 @@ export const Shimmer = () => {
         <div className="food-area-shimmer shimmer"></div>
       </div>
     </div>
+     ))}
+     </>
   );
 };
 
+// Component for rendering a shimmer effect for a restaurant menu
 export const ShimmerMenu = () => {
 
+  // Generating an array of indices for shimmer items
   const shimmerItems = Array.from({ length: 20 }, (_, index) => index);
 
   return (

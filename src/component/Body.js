@@ -1,53 +1,33 @@
-import RestaurantCard from "./RestaurantCard";
-import { useEffect, useState } from "react";
-import {Shimmer } from "./Shimmer";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import RestaurantCard from "./RestaurantCard";
+import { Shimmer } from "./Shimmer";
+import useOnline from "../Hooks/useOnline";
+import UserOffline from "./UserOffline";
+import useRestaurant from "../Hooks/useRestaurant";
+import { filterRestaurants } from "../utils/Helper";
+import { SWIGGY_RESTAURANT_API_URL } from "../utils/Contant";
 
-function filterData(searchText, allRestaurants) {
-  return allRestaurants.filter((restaurant) =>
-    restaurant?.info?.name?.toLowerCase()?.includes(searchText.toLowerCase())
-  );
-}
-
+// Body component for displaying restaurant list and search functionality
 const Body = () => {
-  const [allRestaurants, setAllRestaurants] = useState([]);
-  const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+  // State for search text input
   const [searchText, setSearchText] = useState("");
 
-  useEffect(() => {
-    getRestaurant();
-  }, []);
+  // Check if user is online
+  const isOnline = useOnline();
 
-  const getRestaurant = async () => {
-    try {
-      const data = await fetch(
-        "https://foodfire.onrender.com/api/restaurants?lat=21.1702401&lng=72.83106070000001&page_type=DESKTOP_WEB_LISTING"
-      );
-      const json = await data.json();
-      setAllRestaurants(
-        json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants
-      );
-      setFilteredRestaurants(
-        json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants
-      );
-    } catch (error) {
-      document.write(
-        <h1>
-          This is live swiggy api so fetching data not properly give response. I
-          will work in this problem and solve very soon. Thank You
-        </h1>
-      );
-    }
-  };
+  // Fetching restaurants using custom hook
+  const [allRestaurants, filteredRestaurants, setFilteredRestaurants] = useRestaurant(SWIGGY_RESTAURANT_API_URL);
 
-  if (!allRestaurants) {
-    return null;
+
+  // If user is offline, display UserOffline component
+  if (!isOnline) {
+    return <UserOffline />;
   }
 
   return (
     <>
+      {/* Search bar */}
       <div className="search">
         <input
           type="text"
@@ -59,31 +39,34 @@ const Body = () => {
         <button
           className="search-btn"
           onClick={() => {
-            const data = filterData(searchText, allRestaurants);
+            // Filter restaurants based on search text
+            const data = filterRestaurants(searchText, allRestaurants);
             setFilteredRestaurants(data);
           }}
         >
           Search
         </button>
       </div>
+      {/* Restaurant list */}
       <div className="restaurant-list">
         {allRestaurants?.length === 0 ? (
+          // Display shimmer loading effect if no restaurants are loaded yet
           <>
-            {[...Array(20)].map((_, index) => (
-              <Shimmer key={index} />
-            ))}
+              <Shimmer />
           </>
-        ) : filteredRestaurants?.length == 0 ? (
-          <h1>Not Restaurant match your Filter!</h1>
+        ) : filteredRestaurants?.length === 0 ? (
+          // Display message if no restaurants match the filter
+          <h1>No restaurants match your filter!</h1>
         ) : (
+          // Display filtered restaurants
           filteredRestaurants?.map((restaurant) => (
-            <>
-            <Link to={"/restaurant/"+restaurant?.info?.id} key={restaurant?.info?.id} className="link">
-            <RestaurantCard
-              {...restaurant?.info}
-            />
+            <Link
+              to={"/restaurant/" + restaurant?.info?.id}
+              key={restaurant?.info?.id}
+              className="link"
+            >
+              <RestaurantCard {...restaurant?.info} />
             </Link>
-          </>
           ))
         )}
       </div>

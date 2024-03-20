@@ -756,3 +756,73 @@
   font-size: 10px;
   color: red;
 }
+
+
+/* UserOffline CSS */
+.offline-container {
+  text-align: center;
+  margin-top: 150px;
+}
+
+.offline-container h1 {
+  font-size: 24px;
+  color: #ff0000; /* Red color */
+}
+
+.offline-container p {
+  font-size: 16px;
+  color: #666666; /* Dark gray color */
+}
+
+.game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Arial, sans-serif;
+}
+
+.game-board {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.board-row {
+  display: flex;
+}
+
+.square {
+  width: 50px;
+  height: 50px;
+  margin: 1px;
+  font-size: 24px;
+  background-color: #fff;
+  border: 1px solid #999;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.square:hover {
+  background-color: #f3f3f3;
+}
+
+.game-info {
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+.reset-button {
+  margin-top: 10px;
+  padding: 5px 10px;
+  font-size: 16px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.reset-button:hover {
+  background-color: #45a049;
+}

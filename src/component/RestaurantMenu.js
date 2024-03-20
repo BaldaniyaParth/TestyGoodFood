@@ -1,124 +1,118 @@
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import {
-  IMG_CDN_URL,
-  ITEM_IMG_CDN_URL,
+  RESTAURANT_IMG_CDN_URL,
+  MENU_ITEM_IMG_CDN_URL,
   MENU_ITEM_TYPE_KEY,
   RESTAURANT_TYPE_KEY,
+  SWIGGY_MENU_API_URL
 } from "../utils/Contant";
 import { ShimmerMenu } from "./Shimmer";
+import useRestaurantMenu from "../Hooks/useRestaurantMenu";
+import useOnline from "../Hooks/useOnline";
+import UserOffline from "./UserOffline";
 
+// Component for displaying restaurant menu
 const RestaurantMenu = () => {
+  // Get restaurant ID from URL parameters
   const { resId } = useParams(); 
-  const [restaurant, setRestaurant] = useState(null);
-  const [menuItems, setMenuItems] = useState([]);
-  useEffect(() => {
-    getRestaurantInfo(); 
-  }, []);
-
-  async function getRestaurantInfo() {
-    try {
-      const response = await fetch("https://foodfire.onrender.com/api/menu?page-type=REGULAR_MENU&complete-menu=true&lat=21.1702401&lng=72.83106070000001&&submitAction=ENTER&restaurantId="+resId);
-      const json = await response.json();
-
-      const restaurantData = json?.data?.cards?.map(x => x.card)?.
-                             find(x => x && x.card['@type'] === RESTAURANT_TYPE_KEY)?.card?.info || null;
-      setRestaurant(restaurantData);
-
-      const menuItemsData = json?.data?.cards.find(x=> x.groupedCard)?.
-                            groupedCard?.cardGroupMap?.REGULAR?.
-                            cards?.map(x => x.card?.card)?.
-                            filter(x=> x['@type'] == MENU_ITEM_TYPE_KEY)?.
-                            map(x=> x.itemCards).flat().map(x=> x.card?.info) || [];
-      
-      const uniqueMenuItems = [];
-      menuItemsData.forEach((item) => {
-        if (!uniqueMenuItems.find(x => x.id === item.id)) {
-          uniqueMenuItems.push(item);
-        }
-      })
-      setMenuItems(uniqueMenuItems);
-    } catch (error) {
-      setMenuItems([]);
-      setRestaurant(null);
-      console.log(error);
-    }
-  }
-
-  return !restaurant ? (
-    <ShimmerMenu />
-  ) : (
-    <div className="restaurant-menu">
-      <div className="restaurant-summary">
-        <img
-          className="restaurant-img"
-          src={IMG_CDN_URL + restaurant?.cloudinaryImageId}
-          alt={restaurant?.name}
-        />
-        <div className="restaurant-summary-details">
-          <h2 className="restaurant-title">{restaurant?.name}</h2>
-          <p className="restaurant-tags">{restaurant?.cuisines?.join(", ")}</p>
-          <div className="restaurant-details">
-            <div className="restaurant-rating" style={
-            (restaurant?.avgRating) < 4.3
-              ? { backgroundColor: "red" }
-              : (restaurant?.avgRating) === "--"
-              ? { backgroundColor: "white", color: "black" }
-              : { color: "white" }
-          }>
-            <FontAwesomeIcon icon={faStar} className="star" />
-              <span>{restaurant?.avgRating}</span>
-            </div>
-            <div className="restaurant-rating-slash">|</div>
-            <div>{restaurant?.sla?.slaString}</div>
-            <div className="restaurant-rating-slash">|</div>
-            <div>{restaurant?.costForTwoMessage}</div>
-          </div>
-        </div>
-      </div>
-
-      <div className="restaurant-menu-content">
-        <div className="menu-items-container">
-          <div className="menu-title-wrap">
-            <h3 className="menu-title">Recommended</h3>
-            <p className="menu-count">
-              {menuItems.length} ITEMS
-            </p>
-          </div>
-          <div className="menu-items-list">
-            {menuItems.map((item) => (
-              <div className="menu-item" key={item?.id}>
-                <div className="menu-item-details">
-                  <h3 className="item-title">{item?.name}</h3>
-                  <p className="item-cost">
-                    {item?.price > 0
-                      ? new Intl.NumberFormat("en-IN", {
-                          style: "currency",
-                          currency: "INR",
-                        }).format(item?.price / 100)
-                      : " "}
-                  </p>
-                  <p className="item-desc">{item?.description}</p>
-                </div>
-                <div className="menu-img-wrapper">
-                  {item?.imageId && (
-                    <img
-                      className="menu-item-img"
-                      src={ITEM_IMG_CDN_URL + item?.imageId}
-                      alt={item?.name}
-                    />
-                  )}
-                  <button className="add-btn"> ADD +</button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
+  // Fetch restaurant and menu items data
+  const [restaurant, menuItems] = useRestaurantMenu(
+    resId,
+    SWIGGY_MENU_API_URL,
+    RESTAURANT_TYPE_KEY,
+    MENU_ITEM_TYPE_KEY
   );
+  
+  const isOnline = useOnline();
+
+  // if user is not Online then return UserOffline component
+  if (!isOnline) {
+    return <UserOffline />
+  }
+  
+  // Display loading shimmer if restaurant data is not available
+  if (!restaurant) {
+    return <ShimmerMenu />;
+  } else {
+    // Render restaurant menu
+    return (
+      <div className="restaurant-menu">
+        {/* Display restaurant summary */}
+        <div className="restaurant-summary">
+          <img
+            className="restaurant-img"
+            src={RESTAURANT_IMG_CDN_URL + restaurant?.cloudinaryImageId}
+            alt={restaurant?.name}
+          />
+          <div className="restaurant-summary-details">
+            <h2 className="restaurant-title">{restaurant?.name}</h2>
+            <p className="restaurant-tags">{restaurant?.cuisines?.join(", ")}</p>
+            <div className="restaurant-details">
+              {/* Display restaurant rating with color coding */}
+              <div className="restaurant-rating" style={
+                (restaurant?.avgRating) < 4.3
+                  ? { backgroundColor: "red" }
+                  : (restaurant?.avgRating) === "--"
+                  ? { backgroundColor: "white", color: "black" }
+                  : { color: "white" }
+              }>
+                <FontAwesomeIcon icon={faStar} className="star" />
+                <span>{restaurant?.avgRating}</span>
+              </div>
+              <div className="restaurant-rating-slash">|</div>
+              <div>{restaurant?.sla?.slaString}</div>
+              <div className="restaurant-rating-slash">|</div>
+              <div>{restaurant?.costForTwoMessage}</div>
+            </div>
+          </div>
+        </div>
+        {/* Display menu items */}
+        <div className="restaurant-menu-content">
+          <div className="menu-items-container">
+            <div className="menu-title-wrap">
+              <h3 className="menu-title">Recommended</h3>
+              <p className="menu-count">
+                {menuItems.length} ITEMS
+              </p>
+            </div>
+            <div className="menu-items-list">
+              {/* Map through menu items and display each */}
+              {menuItems.map((item) => (
+                <div className="menu-item" key={item?.id}>
+                  <div className="menu-item-details">
+                    <h3 className="item-title">{item?.name}</h3>
+                    <p className="item-cost">
+                      {/* Display item price */}
+                      {item?.price > 0
+                        ? new Intl.NumberFormat("en-IN", {
+                            style: "currency",
+                            currency: "INR",
+                          }).format(item?.price / 100)
+                        : " "}
+                    </p>
+                    <p className="item-desc">{item?.description}</p>
+                  </div>
+                  <div className="menu-img-wrapper">
+                    {/* Display item image if available */}
+                    {item?.imageId && (
+                      <img
+                        className="menu-item-img"
+                        src={MENU_ITEM_IMG_CDN_URL + item?.imageId}
+                        alt={item?.name}
+                      />
+                    )}
+                    <button className="add-btn"> ADD +</button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 };
 
 export default RestaurantMenu;
