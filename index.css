@@ -94,6 +94,7 @@
   font-size: large;
   border: none;
   cursor: pointer;
+  color: white;
 }
 
 /* Shimmer CSS */
@@ -223,6 +224,7 @@
 
 /* PageNotFound CSS */
 .error-page {
+  margin-top: 50px;
   text-align: center;
   background-color: white;
   height: 100vh;
@@ -533,8 +535,9 @@
 }
 .add-btn {
   background-color: rgba(227,96,26,255);
-  color: #000;
+  color: white;
   padding: 8px 25px;
+  font-size: medium;
   cursor: pointer;
   outline: none;
   border-color: #c26100;
@@ -825,4 +828,50 @@
 
 .reset-button:hover {
   background-color: #45a049;
+}
+
+
+/* Help CSS */
+.help-container {
+  margin: 160px 20vw;
+  background-color: #f0f0f0;
+  width: 60vw;
+  font-family: 'Poppins', sans-serif;
+}
+
+.help-title {
+  padding: 20px 0;
+  font-weight: bold;
+  font-size: 24px;
+  text-align: center;
+  background-color: rgba(227,96,26,255);
+  color: #fff;
+}
+
+.section-container {
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 12px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section-title {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.arrow {
+  font-size: 18px;
+}
+
+.section-description {
+  font-size: 14px;
+  color: #666;
 }

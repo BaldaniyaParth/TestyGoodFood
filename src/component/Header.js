@@ -23,6 +23,7 @@ const Header = () => {
           <li><Link to="/" className="link">Home</Link></li>
           <li><Link to="/about" className="link">About</Link></li>
           <li><Link to="/contact" className="link">Contact</Link></li>
+          <li><Link to="/help" className="link">Help</Link></li>
           <li>Cart</li>
           <Link to="/login">
             {/* Conditional rendering of login/logout button based on login status */}

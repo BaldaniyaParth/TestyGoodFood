@@ -6,6 +6,7 @@ import About from "./component/About";
 import ContactUs from "./component/ContactUs";
 import PageNotFound from "./component/PageNotFound";
 import RestaurantMenu from "./component/RestaurantMenu";
+import Help from "./component/Help";
 
 // AppLayout component for overall layout structure
 const AppLayout = () => {
@@ -28,6 +29,7 @@ const AppRoute = createBrowserRouter([
             { path: "/", element: <Body /> },
             { path: "/about", element: <About /> },
             { path: "/contact", element: <ContactUs /> },
+            { path: "/help", element: <Help /> },
             { path: "/restaurant/:resId", element: <RestaurantMenu /> },
         ]
     },
