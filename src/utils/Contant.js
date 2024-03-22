@@ -17,9 +17,7 @@ export const SWIGGY_MENU_API_URL =
 // Key for menu items API card type
 export const MENU_ITEM_TYPE_KEY =
   "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory";
-// Key for restaurant API card type
-export const RESTAURANT_TYPE_KEY =
-  "type.googleapis.com/swiggy.presentation.food.v2.Restaurant";
+
 
   export const FAQ = [
     {
