@@ -1,5 +1,4 @@
 import { useState } from "react";
-import contact from "../assets/img/conatct.jpg";
 
 // ContactUs component for displaying contact form
 const ContactUs = () => {
@@ -13,10 +12,7 @@ const ContactUs = () => {
 
   return (
     <div className="contact-container">
-      <div className="contact-left">
-        <img src={contact} alt="Contact us" />
-      </div>
-      <div className="contact-right">
+      <div className="contact">
         <h1>Contact us</h1>
         <form onSubmit={handleSubmit}>
           <input type="text" placeholder="Name" required />

@@ -261,29 +261,18 @@
 }
 
 
-/* Contact CSS */
+/* Contact Us CSS */
 .contact-container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
-  margin: 70px auto 20px;
   overflow-y: hidden;
-  height: 85vh;
+  height: 80vh;
 }
 
-.contact-container .contact-left {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.contact-container .contact-left img {
-  width: 300px;
-}
-
-.contact-container .contact-right {
+.contact {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -291,44 +280,44 @@
   font-size: x-large;
 }
 
-.contact-container .contact-right h1 {
+.contact h1 {
   color: #353535;
 }
 
-.contact-container .contact-right form {
+.contact form {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.contact-container .contact-right form input {
+.contact form input {
   padding: 10px;
   margin: 10px;
   border-radius: 5px;
   box-sizing: border-box;
   box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
   border: 1px solid rgba(227,96,26,255);
-  min-width: 50vw;
+  min-width: 45vw;
 }
 
-.contact-container .contact-right form textarea {
+.contact form textarea {
   padding: 10px;
   margin: 10px;
   border-radius: 5px;
   box-sizing: border-box;
   box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
   border: 1px solid rgba(227,96,26,255);
-  min-width: 50vw;
-  height: 20vh;
+  min-width: 45vw;
+  height: 25vh;
 }
 
-.contact-container .contact-right form input:focus,
-.contact-container .contact-right form textarea:focus {
+.contact form input:focus,
+.contact form textarea:focus {
   outline: 1px outset rgba(227,96,26,255);
 }
 
-.contact-container .contact-right form button {
+.contact form button {
   padding: 10px 20px;
   margin: 10px;
   background-color: rgba(227,96,26,255);
@@ -340,7 +329,7 @@
   border-radius: 5px;
 }
 
-.contact-container .contact-right form button:hover {
+.contact form button:hover {
   background-color: rgba(227,96,26,255);
 }
 
@@ -349,7 +338,7 @@
 .about-container {
   display: flex;
   flex-wrap: wrap;
-  margin: 300px 25px 10px;
+  margin: 260px 25px 10px;
   justify-content: space-evenly;
   align-items: center;
 }
@@ -396,9 +385,95 @@
   overflow-y: hidden;
 }
 
-.about-container .about-right img {
-  width: 350px;
-  border-radius: 25%;
+
+/* About Me CSS */
+.about-profile-container {
+  text-align: center;
+}
+
+.profile-container {
+  padding: 20px 10px;
+  margin: 10px;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: -1px 5px 10px 5px rgba(19, 18, 18, 0.2);
+  background: #fff;
+  width: 300px;
+  height: 40vh;
+}
+
+.profile-title {
+  font-size: 30px;
+  line-height: 1.1;
+  justify-content: center;
+  text-align: center;
+  color: #000;
+  overflow-y: hidden;
+}
+
+.profile-user-card {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.profile-user-img {
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  border-style: none;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.profile-user-img:hover {
+  transform: scale(1.02);
+}
+
+.profile-user-bio {
+  font-size: 18px;
+  text-align: center;
+  color: #575757;
+  margin: 0px 10px;
+}
+
+.social-media-container {
+  width: 100%;
+}
+
+.icon-button {
+  margin: 20px;
+}
+
+.icon-button i {
+  color: #ffffff;
+  border-radius: 50%;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1.4rem;
+  height: 2.6rem;
+  width: 2.6rem;
+  line-height: 3rem;
+  overflow-y: hidden;
+}
+
+.icon-button i:hover {
+  transform: scale(1.02);
+}
+
+.linkedin i {
+  background-color: #0a66c2;
+}
+
+.github i {
+  background-color: #333;
+}
+
+.email i {
+  background-color: #ea4335;
 }
 
 
@@ -742,4 +817,5 @@
   padding-top: 10px;
   color: #666;
 }
+
 
