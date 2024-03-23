@@ -20,7 +20,6 @@ const Login = () => {
     onSubmit: values => {
       // Store the data in localStorage
       localStorage.setItem('userLoginData', JSON.stringify(values));
-      
       navigate('/');
     },
   });

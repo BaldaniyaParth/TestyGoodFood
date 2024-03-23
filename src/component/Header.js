@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import logo from '../assets/img/TestyGoodFood.png';
 import { Link } from 'react-router-dom';
 import useOnline from '../Hooks/useOnline';
-import Login from './Login';
+import { useAuth } from '../Hooks/useAuth';
 
 const Title = () => {
   return (
@@ -13,19 +13,8 @@ const Title = () => {
 };
 
 const Header = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  // Check login status on component mount and whenever relevant local storage changes
-  useEffect(() => {
-    const userLoginData = localStorage.getItem('userLoginData');
-    setIsLoggedIn(!!userLoginData);
-  }, [Login]);
-
-  const handleLogout = () => {
-    localStorage.removeItem('userLoginData'); // Remove user data from local storage
-    setIsLoggedIn(false); // Update login state
-    window.location.href = '/'; // Optionally redirect user to home page
-  };
+  
+  const { isLoggedIn, logout, login } = useAuth();
 
   // call custom hook useOnline if user is online or not
   const isOnline = useOnline();
@@ -41,9 +30,9 @@ const Header = () => {
           <li><Link to="/help" className="link">Help</Link></li>
           <li>Cart</li>
           {isLoggedIn ? (
-            <button className="logout" onClick={handleLogout}>Logout <span className={isOnline ? "login-btn-green" : "login-btn-red"}> ●</span></button>
+            <button className="logout" onClick={logout}>Logout <span className={isOnline ? "login-btn-green" : "login-btn-red"}> ●</span></button>
           ) : (
-            <Link to="/login"><button className="login">Login <span className={isOnline ? "login-btn-green" : "login-btn-red"}> ●</span></button></Link>
+            <Link to="/login"><button className="login" onClick={login}>Login <span className={isOnline ? "login-btn-green" : "login-btn-red"}> ●</span></button></Link>
           )}
         </ul>
       </div>

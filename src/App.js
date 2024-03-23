@@ -8,12 +8,14 @@ import PageNotFound from "./component/PageNotFound";
 import RestaurantMenu from "./component/RestaurantMenu";
 import Help from "./component/Help";
 import Login from "./component/Login";
+import { AuthProvider } from './Hooks/useAuth';
 
 // AppLayout component for overall layout structure
 const AppLayout = () => {
     return (
-        <>
-            <Header />
+        <>  <AuthProvider>
+                <Header />
+            </AuthProvider>
             <Outlet />
             <Footer />
         </>
