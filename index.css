@@ -59,6 +59,14 @@
   cursor: pointer;
 }
 
+.login-btn-green {
+  color: green;
+}
+
+.login-btn-red {
+  color: red;
+}
+
 .nav-items > ul > li:hover {
   transform: scale(1.05);
 }

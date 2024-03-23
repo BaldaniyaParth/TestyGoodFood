@@ -13,13 +13,14 @@ const Body = () => {
   // State for search text input
   const [searchText, setSearchText] = useState("");
 
-  // Check if user is online
-  const isOnline = useOnline();
+ 
 
   // Fetching restaurants using custom hook
   const [allRestaurants, filteredRestaurants, setFilteredRestaurants] = useRestaurant(SWIGGY_RESTAURANT_API_URL);
 
-
+ // Check if user is online
+ const isOnline = useOnline();
+ 
   // If user is offline, display UserOffline component
   if (!isOnline) {
     return <UserOffline />;

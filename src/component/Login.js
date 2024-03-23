@@ -1,10 +1,12 @@
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom';
+import UserOffline from "./UserOffline";
+import useOnline from "../Hooks/useOnline";
 
 const Login = () => {
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: {
@@ -22,6 +24,15 @@ const Login = () => {
       navigate('/');
     },
   });
+
+   // Check if user is online
+ const isOnline = useOnline();
+
+
+  // If user is offline, display UserOffline component
+  if (!isOnline) {
+    return <UserOffline />;
+  }
 
   return (
     <div className="login-form-container">

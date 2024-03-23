@@ -2,6 +2,8 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { FAQ } from "../utils/Contant";
+import UserOffline from "./UserOffline";
+import useOnline from "../Hooks/useOnline";
 
 const Section = ({ title, description, isVisible, setIsVisible }) => {
   return (
@@ -23,6 +25,14 @@ const Section = ({ title, description, isVisible, setIsVisible }) => {
 
 const Help = () => {
   const [visibleSection, setVisibleSection] = useState("");
+
+   // Check if user is online
+ const isOnline = useOnline();
+
+  // If user is offline, display UserOffline component
+  if (!isOnline) {
+    return <UserOffline />;
+  }
 
   return (
     <div className="help-container">

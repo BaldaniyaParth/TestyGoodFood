@@ -1,4 +1,6 @@
-import myProfile from "../assets/img/myProfile.jpeg"
+import myProfile from "../assets/img/myProfile.jpeg";
+import UserOffline from "./UserOffline";
+import useOnline from "../Hooks/useOnline";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faLinkedinIn,
@@ -8,6 +10,15 @@ import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
 // About component for displaying about content
 const About = () => {
+
+   // Check if user is online
+ const isOnline = useOnline();
+
+  // If user is offline, display UserOffline component
+  if (!isOnline) {
+    return <UserOffline />;
+  }
+
   return (
     <div className="about-container">
       <div className="about-left">

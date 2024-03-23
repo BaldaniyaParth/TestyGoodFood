@@ -1,4 +1,6 @@
 import { useState } from "react";
+import UserOffline from "./UserOffline";
+import useOnline from "../Hooks/useOnline";
 
 // ContactUs component for displaying contact form
 const ContactUs = () => {
@@ -9,6 +11,14 @@ const ContactUs = () => {
     e.preventDefault();
     setMessage(true);
   };
+
+   // Check if user is online
+ const isOnline = useOnline();
+
+  // If user is offline, display UserOffline component
+  if (!isOnline) {
+    return <UserOffline />;
+  }
 
   return (
     <div className="contact-container">

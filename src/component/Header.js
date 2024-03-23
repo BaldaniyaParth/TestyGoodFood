@@ -1,8 +1,9 @@
-import { useState } from "react";
-import logo from "../assets/img/TestyGoodFood.png";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import logo from '../assets/img/TestyGoodFood.png';
+import { Link } from 'react-router-dom';
+import useOnline from '../Hooks/useOnline';
+import Login from './Login';
 
-// Title component for displaying logo
 const Title = () => {
   return (
     <a href="/">
@@ -11,9 +12,23 @@ const Title = () => {
   );
 };
 
-// Header component for navigation and login/logout functionality
 const Header = () => {
-  const [isloggedIn, setIsLoggedIn] = useState(false); // State for tracking login status
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  // Check login status on component mount and whenever relevant local storage changes
+  useEffect(() => {
+    const userLoginData = localStorage.getItem('userLoginData');
+    setIsLoggedIn(!!userLoginData);
+  }, [Login]);
+
+  const handleLogout = () => {
+    localStorage.removeItem('userLoginData'); // Remove user data from local storage
+    setIsLoggedIn(false); // Update login state
+    window.location.href = '/'; // Optionally redirect user to home page
+  };
+
+  // call custom hook useOnline if user is online or not
+  const isOnline = useOnline();
 
   return (
     <div className="header">
@@ -25,28 +40,11 @@ const Header = () => {
           <li><Link to="/contact" className="link">Contact</Link></li>
           <li><Link to="/help" className="link">Help</Link></li>
           <li>Cart</li>
-          <Link to="/login">
-            {/* Conditional rendering of login/logout button based on login status */}
-            {isloggedIn == false ? (
-              <button
-                className="login"
-                onClick={() => {
-                  setIsLoggedIn(true);
-                }}
-              >
-                Login
-              </button>
-            ) : (
-              <button
-                className="logout"
-                onClick={() => {
-                  setIsLoggedIn(false);
-                }}
-              >
-                Logout
-              </button>
-            )}
-          </Link>
+          {isLoggedIn ? (
+            <button className="logout" onClick={handleLogout}>Logout <span className={isOnline ? "login-btn-green" : "login-btn-red"}> ●</span></button>
+          ) : (
+            <Link to="/login"><button className="login">Login <span className={isOnline ? "login-btn-green" : "login-btn-red"}> ●</span></button></Link>
+          )}
         </ul>
       </div>
     </div>
