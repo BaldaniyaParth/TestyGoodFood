@@ -7,6 +7,7 @@ import ContactUs from "./component/ContactUs";
 import PageNotFound from "./component/PageNotFound";
 import RestaurantMenu from "./component/RestaurantMenu";
 import Help from "./component/Help";
+import Login from "./component/Login";
 
 // AppLayout component for overall layout structure
 const AppLayout = () => {
@@ -33,6 +34,10 @@ const AppRoute = createBrowserRouter([
             { path: "/restaurant/:resId", element: <RestaurantMenu /> },
         ]
     },
+    {
+        path: "/login",
+        element: <Login />
+    }
 ]);
 
 export default AppRoute;
