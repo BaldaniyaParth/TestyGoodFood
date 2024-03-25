@@ -16,12 +16,23 @@ const Header = () => {
   
   const { isLoggedIn, logout, login } = useAuth();
 
+  const [username, setUsername] = useState('');
+
+  useEffect(() => {
+    // Retrieve username from localStorage
+    const userLoginData = JSON.parse(localStorage.getItem('userLoginData'));
+    if (userLoginData) {
+      setUsername(userLoginData.name);
+    }
+  }, [isLoggedIn]);
+
   // call custom hook useOnline if user is online or not
   const isOnline = useOnline();
 
   return (
     <div className="header">
       <Title />
+      {isLoggedIn && <h1 className="user-name">Welcome, {username}!</h1>}
       <div className="nav-items">
         <ul>
           <li><Link to="/" className="link">Home</Link></li>

@@ -29,6 +29,12 @@
   margin: 10px 30px;
 }
 
+.user-name{
+  margin-top: 25px;
+  font-weight: bolder;
+
+}
+
 .nav-items {
   width: auto;
   margin-right: 30px;
@@ -68,11 +74,11 @@
 }
 
 .nav-items > ul > li:hover {
-  transform: scale(1.05);
+  transform: scale(1.2);
 }
 
 .nav-items > ul > button:hover {
-  transform: scale(1.05);
+  transform: scale(1.1);
 }
 
 
@@ -406,8 +412,8 @@
   overflow: hidden;
   box-shadow: -1px 5px 10px 5px rgba(19, 18, 18, 0.2);
   background: #fff;
-  width: 300px;
-  height: 40vh;
+  width: 350px;
+  height: 450px;
 }
 
 .profile-title {
@@ -430,8 +436,8 @@
 
 .profile-user-img {
   border-radius: 50%;
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
   border-style: none;
   cursor: pointer;
   margin: 5px;
