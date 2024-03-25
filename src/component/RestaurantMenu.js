@@ -13,13 +13,15 @@ import { ShimmerMenu } from "./Shimmer";
 import useRestaurantMenu from "../Hooks/useRestaurantMenu";
 import useOnline from "../Hooks/useOnline";
 import UserOffline from "./UserOffline";
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/CartSlice"
 
 // Component for displaying restaurant menu
 const RestaurantMenu = () => {
   // Get restaurant ID from URL parameters
   const { resId } = useParams();
   // Fetch restaurant and menu items data
-  const [restaurant, menuItems, menu] = useRestaurantMenu(
+  const [restaurant, menuItem ,menu] = useRestaurantMenu(
     resId,
     SWIGGY_MENU_API_URL,
     MENU_ITEM_TYPE_KEY
@@ -42,6 +44,12 @@ const RestaurantMenu = () => {
   // if user is not Online then return UserOffline component
   if (!isOnline) {
     return <UserOffline />;
+  }
+
+  const dispatch = useDispatch();
+
+  const addFoodItem = (item) => {
+    dispatch(addItem(item));
   }
 
   // Display loading shimmer if restaurant data is not available
@@ -137,7 +145,7 @@ const RestaurantMenu = () => {
                             alt={item?.card?.info?.name}
                           />
                         )}
-                        <button className="add-btn"> ADD +</button>
+                        <button className="add-btn" onClick={ () => addFoodItem(item?.card?.info)}> ADD +</button>
                       </div>
                     </div>
                   ))}

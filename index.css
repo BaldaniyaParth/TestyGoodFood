@@ -57,7 +57,7 @@
 }
 
 .login , .logout{
-  margin: 35px 10px;
+  margin: 35px 20px;
   font-size: large;
   border: none;
   background-color: white;
@@ -74,11 +74,23 @@
 }
 
 .nav-items > ul > li:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
-.nav-items > ul > button:hover {
+.login:hover {
   transform: scale(1.1);
+}
+
+.logout:hover {
+  transform: scale(1.1);
+}
+
+.cart {
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 1px 4px;
+    font-size: 15px;
 }
 
 
@@ -898,3 +910,7 @@
 }
 
 
+/* Cart CSS */
+.cart-item {
+  margin-top: 200px;
+}

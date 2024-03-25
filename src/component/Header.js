@@ -3,6 +3,8 @@ import logo from '../assets/img/TestyGoodFood.png';
 import { Link } from 'react-router-dom';
 import useOnline from '../Hooks/useOnline';
 import { useAuth } from '../Hooks/useAuth';
+import { useSelector } from 'react-redux';
+
 
 const Title = () => {
   return (
@@ -29,6 +31,8 @@ const Header = () => {
   // call custom hook useOnline if user is online or not
   const isOnline = useOnline();
 
+  const cartItems = useSelector(store => store.cart.items);
+
   return (
     <div className="header">
       <Title />
@@ -39,7 +43,7 @@ const Header = () => {
           <li><Link to="/about" className="link">About</Link></li>
           <li><Link to="/contact" className="link">Contact</Link></li>
           <li><Link to="/help" className="link">Help</Link></li>
-          <li>Cart</li>
+          <li><Link to="/cart" className="link">Cart <span className="cart">{cartItems.length}</span></Link></li>
           {isLoggedIn ? (
             <button className="logout" onClick={logout}>Logout <span className={isOnline ? "login-btn-green" : "login-btn-red"}> ●</span></button>
           ) : (
