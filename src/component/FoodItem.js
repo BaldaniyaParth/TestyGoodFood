@@ -5,25 +5,16 @@ const FoodItem = ({
   imageId,
   name,
   price,
-
-}) =>  {
-  const [quantity, setQuantity] = useState(1)
+  quantity,
+  handleIncrement,
+  handleDecrement,
+}) => {
   const [totalPrice, setTotalPrice] = useState(price * quantity);
 
   useEffect(() => {
     const newTotalPrice = price * quantity;
     setTotalPrice(newTotalPrice);
   }, [price, quantity]);
-
-  const handleIncrement = () => {
-    setQuantity((prevQuantity) => prevQuantity + 1);
-  };
-
-  const handleDecrement = () => {
-    if (quantity > 1) {
-      setQuantity((prevQuantity) => prevQuantity - 1);
-    }
-  };
 
   return (
     <div className="cart-menu">
