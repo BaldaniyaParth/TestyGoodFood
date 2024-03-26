@@ -8,7 +8,6 @@ const useRestaurantMenu = (
 ) => {
   // State variables to store restaurant and menu item data
   const [restaurant, setRestaurant] = useState(null);
-  const [menuItems, setMenuItems] = useState([]);
   const [menu, setMenu] = useState([]);
 
   // Fetch restaurant info on component mount
@@ -27,22 +26,11 @@ const useRestaurantMenu = (
 
         // Set restaurant data
         const restaurantData =
-          json?.data?.cards[0]?.card?.card?.info;
+          json?.data?.cards[2]?.card?.card?.info;
         setRestaurant(restaurantData);
 
-        // Set menu item data
-        const menuItemsData =
-          json?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.map(
-            (x) => x.card?.card
-          )
-          ?.filter((x) => x["@type"] == MENU_ITEM_TYPE_KEY)?.map((x) => x.itemCards)
-          .flat()
-          .map((x) => x.card?.info);
-
-        setMenuItems(menuItemsData);
-
         // set Menu data
-        const menuData = json?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.map(
+        const menuData = json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.map(
           (x) => x.card?.card
         )
         ?.filter((x) => x["@type"] == MENU_ITEM_TYPE_KEY);
@@ -52,13 +40,12 @@ const useRestaurantMenu = (
       }
     } catch (err) {
       console.error(err);
-      setMenuItems([]);
       setRestaurant(null);
       setMenu([]);
     }
   }
 
-  return [restaurant, menuItems, menu];
+  return [restaurant, menu];
 };
 
 export default useRestaurantMenu;

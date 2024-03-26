@@ -1,24 +1,56 @@
+import React, { useState, useEffect } from "react";
 import { RESTAURANT_IMG_CDN_URL } from "../utils/Contant";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
 
-// Component for rendering restaurant card.
 const FoodItem = ({
   imageId,
   name,
-  category,
-  description,
   price,
-}) => {
+}) =>  {
+  const [quantity, setQuantity] = useState(1)
+  const [totalPrice, setTotalPrice] = useState(price * quantity);
+
+  useEffect(() => {
+    const newTotalPrice = price * quantity;
+    setTotalPrice(newTotalPrice);
+  }, [price, quantity]);
+
+  const handleIncrement = () => {
+    setQuantity((prevQuantity) => prevQuantity + 1);
+  };
+
+  const handleDecrement = () => {
+    if (quantity > 1) {
+      setQuantity((prevQuantity) => prevQuantity - 1);
+    }
+  };
+
   return (
-    <div className="card">
-      <img className="food-image" src={RESTAURANT_IMG_CDN_URL + imageId} alt={name} />
-      <h3 className="food-name">{name}</h3>
-      <h4 className="food-cuisines">{category}</h4>
-      <h4 className="food-area">{description}</h4>
-      <span className="food-avg-min">
-        <h4 className="food-min">{price/100}</h4>
-      </span>
+    <div className="cart-menu">
+      <img
+        className="cart-image"
+        src={RESTAURANT_IMG_CDN_URL + imageId}
+        alt={name}
+      />
+      <h3 className="cart-name">{name}</h3>
+      <h4 className="cart-price">
+        Price:{" "}
+        {new Intl.NumberFormat("en-IN", {
+          style: "currency",
+          currency: "INR",
+        }).format(price / 100)}
+      </h4>
+      <div className="quantity-controls">
+        <button onClick={handleDecrement}>-</button>
+        <span>{quantity}</span>
+        <button onClick={handleIncrement}>+</button>
+      </div>
+      <h4 className="cart-total">
+        Total:{" "}
+        {new Intl.NumberFormat("en-IN", {
+          style: "currency",
+          currency: "INR",
+        }).format(totalPrice / 100)}
+      </h4>
     </div>
   );
 };

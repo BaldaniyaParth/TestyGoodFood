@@ -14,14 +14,15 @@ import useRestaurantMenu from "../Hooks/useRestaurantMenu";
 import useOnline from "../Hooks/useOnline";
 import UserOffline from "./UserOffline";
 import { useDispatch } from "react-redux";
-import { addItem } from "../utils/CartSlice"
+import { addItem } from "../utils/CartSlice";
+import { useEffect } from "react";
 
 // Component for displaying restaurant menu
 const RestaurantMenu = () => {
   // Get restaurant ID from URL parameters
   const { resId } = useParams();
   // Fetch restaurant and menu items data
-  const [restaurant, menuItem ,menu] = useRestaurantMenu(
+  const [restaurant ,menu] = useRestaurantMenu(
     resId,
     SWIGGY_MENU_API_URL,
     MENU_ITEM_TYPE_KEY
@@ -51,6 +52,11 @@ const RestaurantMenu = () => {
   const addFoodItem = (item) => {
     dispatch(addItem(item));
   }
+
+  useEffect(() => {
+    // Save cart items to localStorage
+    localStorage.setItem("cartItems", JSON.stringify(menu));
+}, [menu]);
 
   // Display loading shimmer if restaurant data is not available
   if (!restaurant) {
