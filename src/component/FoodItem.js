@@ -5,6 +5,7 @@ const FoodItem = ({
   imageId,
   name,
   price,
+
 }) =>  {
   const [quantity, setQuantity] = useState(1)
   const [totalPrice, setTotalPrice] = useState(price * quantity);
