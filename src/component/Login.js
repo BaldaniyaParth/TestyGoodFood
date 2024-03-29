@@ -33,6 +33,13 @@ const Login = () => {
     return <UserOffline />;
   }
 
+  // Function to display toast notification
+  const notify = () => toast("Message sent to admin!", {
+    style: {
+      marginTop : "100px"
+    }
+  });
+
   return (
     <div className="login-form-container">
       <form onSubmit={formik.handleSubmit} action='/'>

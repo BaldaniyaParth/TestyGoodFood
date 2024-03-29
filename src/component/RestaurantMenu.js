@@ -16,6 +16,8 @@ import UserOffline from "./UserOffline";
 import { useDispatch } from "react-redux";
 import { addItem } from "../utils/CartSlice";
 import { useEffect } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // Component for displaying restaurant menu
 const RestaurantMenu = () => {
@@ -51,7 +53,15 @@ const RestaurantMenu = () => {
 
   const addFoodItem = (item) => {
     dispatch(addItem(item));
+    notify();
   }
+
+   // Function to display toast notification
+   const notify = () => toast("Item added to cart!", {
+    style: {
+      marginTop : "100px"
+    }
+  });
 
   useEffect(() => {
     // Save cart items to localStorage
@@ -64,6 +74,8 @@ const RestaurantMenu = () => {
   } else {
     // Render restaurant menu
     return (
+      <>
+      <ToastContainer />
       <div className="restaurant-menu">
         {/* Display restaurant summary */}
         <div className="restaurant-summary">
@@ -161,6 +173,7 @@ const RestaurantMenu = () => {
           ))}
         </div>
       </div>
+      </>
     );
   }
 };

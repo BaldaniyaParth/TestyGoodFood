@@ -355,7 +355,7 @@
 .about-container {
   display: flex;
   flex-wrap: wrap;
-  margin: 260px 25px 10px;
+  margin: 240px 25px 10px;
   justify-content: space-evenly;
   align-items: center;
 }
@@ -784,7 +784,7 @@
 
 /* Help CSS */
 .help-container {
-  margin: 160px 20vw;
+  margin: 180px 20vw;
   background-color: #f0f0f0;
   width: 60vw;
 }
@@ -925,6 +925,7 @@
   width: 60%;
   box-shadow: -1px 5px 10px 5px rgba(19, 18, 18, 0.2);
   margin-bottom: 10px;
+  margin-top: 30px;
 }
 
 .cart-menu {
