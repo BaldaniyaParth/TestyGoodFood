@@ -1,4 +1,4 @@
-import ErrorImage from "../assets/img/404 Error.jpg";
+import ErrorImage from "../assets/img/404.jpg";
 import { useRouteError, Link } from "react-router-dom";
 
 // PageNotFound component displays when a route is not found
