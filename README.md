@@ -12,6 +12,7 @@ Order food from the comfort of your home. We show the latest restaurants availab
 - **CSS**
 - **JavaScript**
 - **React**
+- **Redux**
 - **Shimmer UI**
 - **React Hooks**
 - **React Router**
