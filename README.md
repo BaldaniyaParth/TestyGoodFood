@@ -4,7 +4,7 @@ Order food from the comfort of your home. We show the latest restaurants availab
 
 ## Live Website Link :-
 
--[TestyGoodFood]()
+-[TestyGoodFood](https://testygoodfood.onrender.com/)
 
 ## Tech Stack
 
@@ -27,8 +27,7 @@ Order food from the comfort of your home. We show the latest restaurants availab
 - **Search**: Search for restaurants by name.
 - **Restaurant Menu**: Check out all the different types of dishes available with details and prices per quantity.
 - **Add to Cart**: Add dishes to your cart.
-- **User Authentication**: Login to the website.
-- **Place Order**: Complete your order and get it delivered.
+- **User Login**: Login the user
 - **About Page**: Contains my details.
 - **Contact Us Page**: Get in touch with us.
 - **FAQs Page**: Frequently Asked Questions.
@@ -36,7 +35,6 @@ Order food from the comfort of your home. We show the latest restaurants availab
 ## Improvements to Make
 
 - **Responsive Design**: Currently not responsive for mobile phones.
-- **Local Storage**: Cart data is not stored in local storage; refreshing the page will clear the cart.
 
 ## How to Run Locally
 
